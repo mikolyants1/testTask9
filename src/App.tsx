@@ -15,7 +15,9 @@ import InputMapCard from './components/ui/cards/InputMapCard';
 function App() {
   const [data,setData] = useState<IState>({} as IState);
   const [field,setField] = useState<Fields>({} as Fields);
-  const [state,setState] = useState<Initial>({page:0} as Initial);
+  const [state,setState] = useState<Initial>({
+    page:0,error:false,loading:true
+  });
 
   useEffect(():void=>{
     getData(state.page)
@@ -68,12 +70,12 @@ function App() {
       <Wrapper>
         <InputMapCard
          search={search}
-        />
+         />
         <Table
          dataSource={data.data}
          columns={coloumns}
          pagination={false}
-          />
+         />
         <PaginateButtons
          setState={setState}
          page={state.page}
